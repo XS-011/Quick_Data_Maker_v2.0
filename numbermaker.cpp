@@ -219,8 +219,78 @@ void Check(int ppp)
 			printf("<-");
 			printf("\n");
 			
+			for(int i=1;i<=8;i++)
+			printf(" ");
+			if(q==5)
+			printf("->");
+			else
+			printf("  ");
+			printf("【删除此变量】");
+			if(q==5)
+			printf("<-");
+			printf("\n");
 			
+			for(int i=1;i<=8;i++)
+			printf(" ");
+			if(q==6)
+			printf("->");
+			else
+			printf("  ");
+			printf("【退出】");
+			if(q==6)
+			printf("<-");
+			printf("\n");
 
+			int Read=-1
+			while(1)
+			{
+				Read=getCommand();
+				if(Read==2 || Read==0 || Read==-2)
+				break;
+			}
+			if(Read==2)
+			q++;
+			if(Read==0)
+			q--;
+			if(Read==-2)
+			{
+				if(variable[ppp].Kinds=='d')
+				{
+					if(q==1)
+					{
+						printf("你想更改变量名为什么？\n");
+						cin>>variable[ppp].Names;
+					}
+					if(q==2)
+					{
+						printf("你想更改最大值为什么？\n");
+						cin>>variable[ppp].Max;
+					}
+					if(q==3)
+					{
+						printf("你想更改最小值为什么？\n");
+						cin>>variable[ppp].Min;
+					}
+					if(q==4)
+					{
+						printf("你想更改之后输出为什么？0.不输出任何东西，1.空格，2.换行\n");
+						cin>>variable[ppp].After;
+					}
+					if(q==5)
+					{
+						printf("你确定删除此变量？1.是的2.不是");
+						cin>>Read;
+						if(Read==1)
+						{
+							for(int i=ppp;i<variable_n;i++)
+							variable[i]=variable[i+1];
+							variable_n--;
+						}
+					}
+					if(q==6)
+					break;
+				}
+			}
 		}
 	}
 }
